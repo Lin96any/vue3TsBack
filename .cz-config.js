@@ -15,7 +15,7 @@ module.exports = {
 
 	messages: {
 		type: '确保本次提交遵循 Angular 规范！\n选择你要提交的类型：',
-        customScope:'请输入修改范围',
+		customScope: '请输入修改范围',
 		subject: '填写简短精炼的变更描述：\n',
 		body: '填写更加详细的变更描述（可选）。使用 "|" 换行：\n',
 		breaking: '列举非兼容性重大的变更（可选）：\n',
