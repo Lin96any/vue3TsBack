@@ -1,5 +1,5 @@
 // Axios封装
-import {AxiosInstance,AxiosResponse,AxiosRequestConfig} from "axios";
+import {AxiosInstance} from "axios";
 import axios from "axios";
 class LinRequest{
     instance: AxiosInstance;
