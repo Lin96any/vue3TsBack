@@ -1,9 +1,17 @@
 import { createStore } from 'vuex';
+import {RootState} from "@/store/stateType";
+import {userStore} from "@/store/module/user";
 
-export default createStore({
-	state: {},
+export default createStore<RootState>({
+	state: {
+		avatar:'',
+		userId:'',
+		token:''
+	},
 	getters: {},
 	mutations: {},
 	actions: {},
-	modules: {},
+	modules: {
+		userStore
+	},
 });
