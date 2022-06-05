@@ -18,5 +18,6 @@ module.exports = {
 		'prettier/prettier': 'off',
 		'vue/multi-word-component-names': 0,
 		'vue/valid-template-root': 0,
+		'@typescript-eslint/no-explicit-any': 'off'
 	},
 };

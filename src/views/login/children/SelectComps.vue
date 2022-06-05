@@ -15,6 +15,7 @@
 <script setup lang="ts">
 import account from "./AccountLogin.vue";
 import {ref, watch} from "vue";
+import http from "@/service/api";
 const accountLogin = ref<InstanceType<typeof account>>();
 const TabsType = ref("account");
 const LoginTypeTitle = ref("账户登陆")
@@ -31,7 +32,13 @@ watch(TabsType,(newValue)=>{
 })
 
 //登陆按钮点击事件
-const login = ()=> {
+const login = async ()=> {
+  const res = await http.get({
+    url:"https://apk-1256738511.cos.ap-chengdu.myqcloud.com/FlutterTrip/data/home_page.json"
+  })
+
+  console.log(res.bannerList);
+  console.log(res);
   const SelectType = TabsType.value;
   switch (SelectType){
     case "account":

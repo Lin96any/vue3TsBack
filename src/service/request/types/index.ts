@@ -1,11 +1,20 @@
 import {AxiosResponse,AxiosRequestConfig} from "axios";
 
 
-export interface LinIntercepters{
-    RequestIntercepters:(config:AxiosRequestConfig) => AxiosRequestConfig;
+export interface LinInterceptors<T = AxiosResponse>{
+    RequestInterceptors?:(config:AxiosRequestConfig) => AxiosRequestConfig;
+    ResponseInterceptors?: (res:T) => T;
+    RequestInterceptorsError: (err: any) => any;
+    ResponseInterceptorsError: (err: any) => any;
 }
 
-export interface LinRequestConfig extends AxiosRequestConfig{
-    intercepters?:LinIntercepters,
-    showLoading:boolean
+export interface LinRequestConfig<T = AxiosResponse> extends AxiosRequestConfig{
+    interceptors?:LinInterceptors<T>,
+    showLoading?:boolean
+}
+
+export interface GlobalData{
+    msg:string,
+    code:string|number,
+    [key:string]:any
 }
