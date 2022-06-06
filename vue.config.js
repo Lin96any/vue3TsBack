@@ -3,6 +3,14 @@ const resolve = (dir) => path.resolve(__dirname, dir);
 const { defineConfig } = require('@vue/cli-service');
 module.exports = defineConfig({
 	transpileDependencies: true,
+	devServer:{
+		proxy:{
+			'/api':{
+				target: 'https://api.imooc-admin.lgdsunday.club/',
+				changeOrigin:true
+			}
+		},
+	},
 	chainWebpack: (config) => {
 		config.resolve.alias
 			.set('@', resolve('./src'))

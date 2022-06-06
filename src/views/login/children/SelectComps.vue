@@ -35,6 +35,8 @@ watch(TabsType,(newValue)=>{
 //登陆按钮点击事件
 const login = async ()=> {
   const SelectType = TabsType.value;
+
+
   switch (SelectType){
     case "account":
       accountLogin.value.SubmitValidate();

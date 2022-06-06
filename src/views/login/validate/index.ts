@@ -8,7 +8,7 @@ export  const ValidateAccount = reactive({
             trigger: "blur",
         },
         {
-            pattern: /^[a-zA-Z\d]{6,}$/,
+            pattern: /^[a-zA-Z\d]{4,}$/,
             message: "用户名必须是至少6个字母或者数字",
             trigger: "blur",
         },

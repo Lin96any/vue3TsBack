@@ -15,11 +15,11 @@ import {Rem} from "@/utils/validate";
 Rem(1920);
 
 
-
-
 const app = createApp(App);
 app.use(store);
 app.use(router);
 AutoComponents(app);
 app.component('svg-icon', SvgIcon)
 app.mount('#app');
+
+

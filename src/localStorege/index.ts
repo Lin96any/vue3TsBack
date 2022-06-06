@@ -11,7 +11,11 @@ const SaveLocalStore = (key: string, value: any) => {
 export function getLocalStore(key:string) {
     const res = localStorage.getItem(key);
     if(res){
-        return JSON.parse(res);
+        try {
+            return JSON.parse(res);
+        }catch (e) {
+            return res
+        }
     }
     return undefined;
 }

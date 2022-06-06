@@ -23,7 +23,10 @@
 <script setup lang="ts">
 import {ref, defineExpose, reactive} from "vue";
 import {ValidateAccount} from "../validate";
+import {useStore} from "vuex";
 import type {FormInstance} from "element-plus";
+
+const store = useStore();
 const accountInfo = reactive({
   account: "",
   password: ""
@@ -34,7 +37,7 @@ const accountForm = ref<FormInstance>();
 const SubmitValidate = () => {
   accountForm.value?.validate((vali)=>{
       if(vali){
-        console.log(accountInfo.password)
+        store.dispatch('userStore/login',accountInfo)
       }
   })
 }

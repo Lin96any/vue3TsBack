@@ -8,9 +8,7 @@ export default createStore<RootState>({
 		userId:'',
 		token:''
 	},
-	getters: {},
-	mutations: {},
-	actions: {},
+	getters:{},
 	modules: {
 		userStore
 	},

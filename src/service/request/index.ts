@@ -44,16 +44,23 @@ export default class LinRequest {
                     res = config.interceptors?.ResponseInterceptors(res);
                 }
 
-                resolve(res);
+                console.log(res)
+                if((res as any).success){
+                    resolve((res as any).data);
+                }else{
+                    reject((res as any).message)
+                }
+
             }, err => reject(err))
         });
     }
 
-    async get<T = GlobalData>(config: LinRequestConfig<T>): Promise<T> {
-        return await this.request<T>({...config, method: "GET"})
+     get<T = GlobalData>(config: LinRequestConfig<T>): Promise<T> {
+        return  this.request<T>({...config, method: "GET"})
     }
 
-    async post<T = GlobalData>(config: LinRequestConfig<T>): Promise<T> {
-        return await this.request<T>({...config, method: "POST"})
+     post<T = GlobalData>(config: LinRequestConfig<T>): Promise<T> {
+        return  this.request<T>({...config, method: "POST"})
     }
+
 }
