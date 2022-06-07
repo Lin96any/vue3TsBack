@@ -1,7 +1,7 @@
 import {Module} from "vuex";
 import {RootState, UserState} from "@/store/stateType";
-import {userLogin} from "@/service/api/user";
-import {SaveLocalStr} from "@/localStorege";
+import {getUserInfo, userLogin} from "@/service/api/user";
+import {getLocalStore, SaveLocalStr} from "@/localStorege";
 import router from "@/router";
 
 export const userStore: Module<UserState, RootState> = {
@@ -19,7 +19,11 @@ export const userStore: Module<UserState, RootState> = {
             SaveLocalStr('token', token);
         }
     },
+    getters:{
+        getUserToken:state => state.token
+    },
     actions: {
+        //登陆
         async login({commit}, userInfo) {
             const {account, password} = userInfo;
             try {
@@ -29,7 +33,20 @@ export const userStore: Module<UserState, RootState> = {
             } catch (e: any) {
                 console.log(e)
             }
+        },
+        //获取用户信息
+        async getUserInfo({commit},info){
+           const res = await getUserInfo()
+            console.log(res)
+        },
+        //防止刷新状态丢失
+        async updateState({commit}){
+            //获取本地缓存的token信息
+            const token = getLocalStore('token')
+            if(token){
+                commit('setToken',token)
+            }
         }
     },
-    getters: {}
+
 }

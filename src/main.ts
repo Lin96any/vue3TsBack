@@ -14,9 +14,11 @@ import "assets/style/global.scss"
 import {Rem} from "@/utils/validate";
 Rem(1920);
 
+const {dispatch} = store;
 
 const app = createApp(App);
 app.use(store);
+dispatch('userStore/updateState')
 app.use(router);
 AutoComponents(app);
 app.component('svg-icon', SvgIcon)

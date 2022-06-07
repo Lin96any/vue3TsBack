@@ -1,5 +1,6 @@
 import Request from "../request";
 import md5 from "md5";
+import store from "@/store";
 const http = new Request({
     baseURL:process.env.VUE_APP_BASE_API,
     timeout:5000,
@@ -14,7 +15,14 @@ const http = new Request({
             // @ts-ignore
             config.headers.codeType = time
             // 在这个位置需要统一的去注入token
-            console.log(config)
+            if(store.getters['userStore/getUserToken']){
+                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                // @ts-ignore
+                config.headers.Authorization = `Bearer ${store.getters['userStore/getUserToken']}`
+
+            }
+
+            console.log(store.getters["userStore/getUserToken"])
 
             return config
         },

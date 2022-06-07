@@ -6,7 +6,7 @@ export  const Rem = (viewSize = 1920)=> {
         let width = document.documentElement.clientWidth;
         if(width>1920){
             width = 1920 * dpr
-        }else if(width<1300&&width>750){
+        }else if(width<=1300&&width>750){
             width = 1300 * dpr
         }else if(width<=750){
             viewSize = 750;
